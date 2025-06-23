@@ -1,0 +1,89 @@
+package oi.github.cadnunsdimir.congespapi.domain.services;
+
+import java.time.LocalDate;
+import java.time.Month;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
+import oi.github.cadnunsdimir.congespapi.domain.models.TerritoryAssignmentRecord;
+import oi.github.cadnunsdimir.congespapi.domain.models.TerritoryAssignmentSheetData;
+import oi.github.cadnunsdimir.congespapi.entities.territory.assignment.*;
+import oi.github.cadnunsdimir.congespapi.infra.repositories.territory.assignment.RecordRepository;
+import oi.github.cadnunsdimir.congespapi.infra.repositories.territory.assignment.SheetRepository;
+import oi.github.cadnunsdimir.congespapi.infra.repositories.territory.assignment.TerritoryNumberRepository;
+
+@ApplicationScoped
+public class TerritoryAssignmentService {
+    private final SheetRepository sheetRepository;
+    private final TerritoryNumberRepository territoryNumberRepository;
+    private final RecordRepository recordRepository;
+
+    public TerritoryAssignmentService(
+        SheetRepository sheetRepository, 
+        TerritoryNumberRepository territoryNumberRepository,
+        RecordRepository recordRepository) {
+        this.sheetRepository = sheetRepository;
+        this.territoryNumberRepository = territoryNumberRepository;
+        this.recordRepository = recordRepository;
+    }
+
+    @Transactional
+    public void addRecord(final TerritoryAssignmentRecord recordViewModel){
+        Sheet sheet = defineSheet();
+
+        TerritoryNumber territoryNumber = defineTerritory(recordViewModel);
+
+        AssignmentRecord dbRecord = buildRecord(recordViewModel, sheet, territoryNumber);
+        
+        recordRepository.persist(dbRecord);
+    }
+
+    private TerritoryNumber defineTerritory(TerritoryAssignmentRecord recordViewModel) {
+        var territory = territoryNumberRepository.findByNumber(recordViewModel.getTerritoryNumber());
+
+        if (territory == null) {
+            territory = new TerritoryNumber();
+            territory.setNumber(recordViewModel.getTerritoryNumber());
+            territoryNumberRepository.persist(territory);
+        }
+
+        return territory;
+    }
+
+    private Sheet defineSheet() {
+        Sheet sheet = sheetRepository.findLastServiceYear();
+
+        if (sheet == null) {
+            int serviceYear = getCurrentServiceYear();
+            sheet = new Sheet();
+            sheet.setServiceYear(serviceYear);
+            sheet.setSheetNumber(1);
+            sheetRepository.persist(sheet);
+        }
+
+        return sheet;
+    }
+
+    private int getCurrentServiceYear() {
+        var date = LocalDate.now();
+        return date.getMonth().getValue() >= Month.SEPTEMBER.getValue() ? date.getYear() + 1 : date.getYear();
+    }
+
+    private AssignmentRecord buildRecord(final TerritoryAssignmentRecord assinmentRecord, Sheet sheet, TerritoryNumber territoryNumber) {
+        return AssignmentRecord.builder()
+            .assignedTo(assinmentRecord.getAssignedTo())
+            .assignedDate(assinmentRecord.getAssignedDate())
+            .completedDate(assinmentRecord.getCompletedDate())
+            .sheet(sheet)
+            .territoryNumber(territoryNumber)
+            .build();
+    }
+
+    @Transactional
+    public TerritoryAssignmentSheetData getCurrentSheetData() {
+        var sheet = defineSheet();
+        var records = recordRepository.listBySheetId(sheet.getId());
+
+        return new TerritoryAssignmentSheetData(sheet, records);
+    }
+}

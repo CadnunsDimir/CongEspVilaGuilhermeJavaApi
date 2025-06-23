@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  app:
+    image: cong_esp_java_app
+    container_name: java_app
+    networks:
+      - app-network
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/appdb
+      - SPRING_DATASOURCE_USERNAME=appuser
+      - SPRING_DATASOURCE_PASSWORD=apppassword
+    depends_on:
+      - db
+    ports:
+      - 8085:8080
+
+  db:
+    image: postgres:16
+    container_name: postgres_db
+    networks:
+      - app-network
+    environment:
+      - POSTGRES_DB=cong-esp
+      - POSTGRES_USER=appuser
+      - POSTGRES_PASSWORD=apppassword
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432 
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db-data:
