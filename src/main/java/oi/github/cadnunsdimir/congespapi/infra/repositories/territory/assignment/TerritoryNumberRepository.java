@@ -6,7 +6,6 @@ import oi.github.cadnunsdimir.congespapi.entities.territory.assignment.Territory
 
 @ApplicationScoped
 public class TerritoryNumberRepository implements PanacheRepository<TerritoryNumber> {
-
     public TerritoryNumber findByNumber(int territoryNumber) {
         return find("number", territoryNumber).firstResult();
     }

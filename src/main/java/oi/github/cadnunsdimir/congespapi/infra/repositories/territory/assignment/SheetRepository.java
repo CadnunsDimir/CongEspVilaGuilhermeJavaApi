@@ -10,7 +10,6 @@ public class SheetRepository implements PanacheRepository<Sheet>{
 
     @Transactional
     public Sheet findLastServiceYear() {
-        return find("ORDER BY serviceYear DESC, sheetNumber DESC").firstResult();
+        return find("ORDER BY serviceYear DESC").firstResult();
     }
-
 }

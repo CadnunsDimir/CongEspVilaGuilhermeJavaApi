@@ -9,9 +9,7 @@ import oi.github.cadnunsdimir.congespapi.entities.territory.assignment.Assignmen
 
 @ApplicationScoped
 public class RecordRepository implements PanacheRepository<AssignmentRecord> {
-
     public List<AssignmentRecord> listBySheetId(UUID id) {
         return list("sheet.id", id);
     }
-
 }

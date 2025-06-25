@@ -30,11 +30,8 @@ public class TerritoryAssignmentService {
     @Transactional
     public void addRecord(final TerritoryAssignmentRecord recordViewModel){
         Sheet sheet = defineSheet();
-
         TerritoryNumber territoryNumber = defineTerritory(recordViewModel);
-
-        AssignmentRecord dbRecord = buildRecord(recordViewModel, sheet, territoryNumber);
-        
+        AssignmentRecord dbRecord = buildRecord(recordViewModel, sheet, territoryNumber);        
         recordRepository.persist(dbRecord);
     }
 
@@ -52,12 +49,12 @@ public class TerritoryAssignmentService {
 
     private Sheet defineSheet() {
         Sheet sheet = sheetRepository.findLastServiceYear();
+        boolean isFirstSheetOfTheServiceYear = sheet == null;
 
-        if (sheet == null) {
+        if (isFirstSheetOfTheServiceYear) {
             int serviceYear = getCurrentServiceYear();
             sheet = new Sheet();
             sheet.setServiceYear(serviceYear);
-            sheet.setSheetNumber(1);
             sheetRepository.persist(sheet);
         }
 
@@ -69,11 +66,11 @@ public class TerritoryAssignmentService {
         return date.getMonth().getValue() >= Month.SEPTEMBER.getValue() ? date.getYear() + 1 : date.getYear();
     }
 
-    private AssignmentRecord buildRecord(final TerritoryAssignmentRecord assinmentRecord, Sheet sheet, TerritoryNumber territoryNumber) {
+    private AssignmentRecord buildRecord(final TerritoryAssignmentRecord assignmentRecord, Sheet sheet, TerritoryNumber territoryNumber) {
         return AssignmentRecord.builder()
-            .assignedTo(assinmentRecord.getAssignedTo())
-            .assignedDate(assinmentRecord.getAssignedDate())
-            .completedDate(assinmentRecord.getCompletedDate())
+            .assignedTo(assignmentRecord.getAssignedTo())
+            .assignedDate(assignmentRecord.getAssignedDate())
+            .completedDate(assignmentRecord.getCompletedDate())
             .sheet(sheet)
             .territoryNumber(territoryNumber)
             .build();
@@ -84,6 +81,6 @@ public class TerritoryAssignmentService {
         var sheet = defineSheet();
         var records = recordRepository.listBySheetId(sheet.getId());
 
-        return new TerritoryAssignmentSheetData(sheet, records);
+        return new TerritoryAssignmentSheetData(sheet, records, 4);
     }
 }

@@ -18,5 +18,4 @@ public class Sheet {
     @Id
     private UUID id = UUID.randomUUID();   
     private int serviceYear;
-    private int sheetNumber;
 }
