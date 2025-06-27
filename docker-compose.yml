@@ -1,15 +1,13 @@
-version: '3.8'
-
 services:
-  app:
-    image: cong_esp_java_app
-    container_name: java_app
+  cong-esp-app:
+    build: .
+    container_name: cong-esp-app
     networks:
       - app-network
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/appdb
-      - SPRING_DATASOURCE_USERNAME=appuser
-      - SPRING_DATASOURCE_PASSWORD=apppassword
+      QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://db:5432/cong-esp
+      QUARKUS_DATASOURCE_USERNAME: appuser
+      QUARKUS_DATASOURCE_PASSWORD: apppassword
     depends_on:
       - db
     ports:

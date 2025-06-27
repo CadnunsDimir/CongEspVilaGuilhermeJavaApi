@@ -1,0 +1,11 @@
+### Post a new record
+POST http://localhost:8085/api/territory/assignment/record
+
+{
+    "territoryNumber" :21 ,
+    "assignedTo" : "Tiago",
+    "assignedDate" : "2025-06-20"
+}
+
+### Get full Sheet
+GET http://localhost:8085/api/territory/assignment

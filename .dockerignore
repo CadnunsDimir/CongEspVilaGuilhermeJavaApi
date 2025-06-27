@@ -3,3 +3,7 @@
 !target/*-runner.jar
 !target/lib/*
 !target/quarkus-app/*
+
+# Não exclua os arquivos essenciais para o build do Maven/Quarkus no estágio de build
+!pom.xml
+!src/
