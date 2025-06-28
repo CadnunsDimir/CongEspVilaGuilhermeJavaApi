@@ -2,9 +2,10 @@
 POST http://localhost:8085/api/territory/assignment/record
 
 {
-    "territoryNumber" :21 ,
+    "territoryNumber" :1 ,
     "assignedTo" : "Tiago",
-    "assignedDate" : "2025-06-20"
+    "assignedDate" : "2025-06-20",
+    "completedDate": "2025-06-21"
 }
 
 ### Get full Sheet
