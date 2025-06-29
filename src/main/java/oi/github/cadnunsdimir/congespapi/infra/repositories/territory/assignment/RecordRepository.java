@@ -11,7 +11,7 @@ import oi.github.cadnunsdimir.congespapi.entities.territory.assignment.Assignmen
 @ApplicationScoped
 public class RecordRepository implements PanacheRepository<AssignmentRecord> {
     public List<AssignmentRecord> listBySheetId(UUID id) {
-        return list("sheet.id", id);
+        return list("sheet.id = ?1 order by assignedDate", id);
     }
 
     public void updateCompletedDate(UUID recordId, LocalDate completedDate) {
