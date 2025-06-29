@@ -1,5 +1,6 @@
 package oi.github.cadnunsdimir.congespapi.infra.repositories.territory.assignment;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,5 +12,9 @@ import oi.github.cadnunsdimir.congespapi.entities.territory.assignment.Assignmen
 public class RecordRepository implements PanacheRepository<AssignmentRecord> {
     public List<AssignmentRecord> listBySheetId(UUID id) {
         return list("sheet.id", id);
+    }
+
+    public void updateCompletedDate(UUID recordId, LocalDate completedDate) {
+        update("completedDate = ?1 where id = ?2", completedDate, recordId);
     }
 }

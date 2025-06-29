@@ -2,9 +2,17 @@
 POST http://localhost:8085/api/territory/assignment/record
 
 {
-    "territoryNumber" :1 ,
+    "territoryNumber" : 1,
     "assignedTo" : "Tiago",
     "assignedDate" : "2025-06-20",
+    "completedDate": "2025-06-21"
+}
+
+### update completedDate
+PATCH  http://localhost:8085/api/territory/assignment/record
+
+{
+    "recordId" : "f2a86355-0d2f-46c9-b912-7236047d678e",
     "completedDate": "2025-06-21"
 }
 

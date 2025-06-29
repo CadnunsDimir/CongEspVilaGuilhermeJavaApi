@@ -5,6 +5,7 @@ import java.time.Month;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
+import oi.github.cadnunsdimir.congespapi.domain.models.TerritoryAssignmentPatchRecord;
 import oi.github.cadnunsdimir.congespapi.domain.models.TerritoryAssignmentRecord;
 import oi.github.cadnunsdimir.congespapi.domain.models.TerritoryAssignmentSheetData;
 import oi.github.cadnunsdimir.congespapi.entities.territory.assignment.*;
@@ -82,5 +83,10 @@ public class TerritoryAssignmentService {
         var records = recordRepository.listBySheetId(sheet.getId());
 
         return new TerritoryAssignmentSheetData(sheet, records, 4);
+    }
+
+    @Transactional
+    public void patchRecord(TerritoryAssignmentPatchRecord patchedRecord) {
+        recordRepository.updateCompletedDate(patchedRecord.getRecordId(), patchedRecord.getCompletedDate());
     }
 }
