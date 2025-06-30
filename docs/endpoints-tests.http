@@ -1,3 +1,6 @@
+### generate assignment Schedule
+GET http://localhost:8080/api/meetings/assignment
+
 ### Post a new record
 POST http://localhost:8080/api/territory/assignment/record
 
@@ -9,3 +12,62 @@ POST http://localhost:8080/api/territory/assignment/record
 
 ### Get full Sheet
 GET http://localhost:8080/api/territory/assignment
+
+### create meeting assingment
+
+POST http://localhost:8080/api/meetings/assignment/type
+
+{
+    "type": "Microfono"
+}
+
+### get meeting assingment type
+GET http://localhost:8080/api/meetings/assignment/type
+
+### post csv file content as string
+POST http://localhost:8080/api/meetings/assignment/brother
+
+{
+    "name" : "teste brother"
+}
+
+### post csv file content as string
+POST http://localhost:8080/api/meetings/assignment/brother/csv
+Content-Type: text/plain
+
+< C:\\Users\\tiago\\dev-projects\\python\\VilaGuilherme-Varones2.csv
+
+### get brothers
+GET  http://localhost:8080/api/meetings/assignment/brother
+
+
+### add template colum
+PUT http://localhost:8080/api/meetings/assignment/template
+Content-Type: application/json
+
+[
+    {
+        "label" : "Acomodador",
+        "typeId": "9cca0aea-df1a-4a3a-8f13-105ce116c31e"
+    },
+    {
+        "label" : "Acomodador",
+        "typeId": "9cca0aea-df1a-4a3a-8f13-105ce116c31e"
+    },
+    {
+        "label" : "Audio",
+        "typeId":  "311ff0c4-e329-4b88-a1d6-93897904eeaa"
+    },
+    {
+        "label" : "Video",
+        "typeId":  "311ff0c4-e329-4b88-a1d6-93897904eeaa"
+    },
+    {
+        "label" : "Microfono",
+        "typeId":  "311ff0c4-e329-4b88-a1d6-93897904eeaa"
+    },
+    {
+        "label" : "Microfono",
+        "typeId":  "311ff0c4-e329-4b88-a1d6-93897904eeaa"
+    }
+]
