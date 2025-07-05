@@ -1,0 +1,31 @@
+### update group list
+PATCH http://localhost:8086/api/congregation/groups
+
+[
+    {
+        "groupNumber" : 1,
+        "groupOverseer" : "Antonio"
+    },
+    {
+        "groupNumber" : 2,
+        "groupOverseer" : "Jorge"
+    },
+    {
+        "groupNumber" : 3,
+        "groupOverseer" : "Joel Amador"
+    },
+    {
+        "groupNumber" : 4,
+        "groupOverseer" : "David"
+    },
+    {
+        "groupNumber" : 5,
+        "groupOverseer" : "Derik"
+    }
+]
+
+### list all groups
+GET  http://localhost:8086/api/congregation/groups
+
+### get cleaning list
+GET http://localhost:8086/api/meetings/cleaning
