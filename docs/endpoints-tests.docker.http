@@ -18,3 +18,38 @@ PATCH  http://localhost:8085/api/territory/assignment/record
 
 ### Get full Sheet
 GET http://localhost:8085/api/territory/assignment
+
+### generate assignment Schedule
+GET http://localhost:8085/api/meetings/assignment
+
+### update group list
+PATCH http://localhost:8085/api/congregation/groups
+
+[
+    {
+        "groupNumber" : 1,
+        "groupOverseer" : "Antonio"
+    },
+    {
+        "groupNumber" : 2,
+        "groupOverseer" : "Jorge"
+    },
+    {
+        "groupNumber" : 3,
+        "groupOverseer" : "Joel Amador"
+    },
+    {
+        "groupNumber" : 4,
+        "groupOverseer" : "David"
+    },
+    {
+        "groupNumber" : 5,
+        "groupOverseer" : "Derik"
+    }
+]
+
+### list all groups
+GET http://localhost:8085/api/congregation/groups
+
+### get cleaning list
+GET http://localhost:8085/api/meetings/cleaning

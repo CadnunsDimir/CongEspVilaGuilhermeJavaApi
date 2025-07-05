@@ -1,8 +1,7 @@
 package oi.github.cadnunsdimir;
 
 import io.quarkus.test.InjectMock;
-import io.quarkus.test.junit.QuarkusTest;
-import oi.github.cadnunsdimir.congespapi.domain.services.TerritoryAssignmentService;
+import io.github.cadnunsdimir.congespapi.domain.services.TerritoryAssignmentService;
 
 import static io.restassured.RestAssured.given;
 

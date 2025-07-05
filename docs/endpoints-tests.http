@@ -1,6 +1,3 @@
-### generate assignment Schedule
-GET http://localhost:8080/api/meetings/assignment
-
 ### Post a new record
 POST http://localhost:8080/api/territory/assignment/record
 
@@ -13,8 +10,10 @@ POST http://localhost:8080/api/territory/assignment/record
 ### Get full Sheet
 GET http://localhost:8080/api/territory/assignment
 
-### create meeting assingment
+### generate assignment Schedule
+GET http://localhost:8080/api/meetings/assignment
 
+### create meeting assingment type
 POST http://localhost:8080/api/meetings/assignment/type
 
 {
