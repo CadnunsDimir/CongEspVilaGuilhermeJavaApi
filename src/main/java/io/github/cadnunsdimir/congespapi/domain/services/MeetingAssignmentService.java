@@ -35,7 +35,7 @@ public class MeetingAssignmentService extends MeetingListServiceBase {
                         x.getType().equals(templateItem.getType().getType()))
                     .findFirst()
                     .orElseThrow();
-                date.add(assigner.next(date).getName());                
+                date.add(assigner.next(date, templateItem.getId()).getName());
             }
             meetings.add(date);
             currentDate = this.nextMeetingDate(currentDate);
