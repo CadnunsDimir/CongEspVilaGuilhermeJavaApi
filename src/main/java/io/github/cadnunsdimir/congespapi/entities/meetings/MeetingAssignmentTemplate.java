@@ -19,5 +19,5 @@ public class MeetingAssignmentTemplate {
     private String label;
 
     @ManyToOne
-    private AssignmenType type;
+    private AssignmentType type;
 }

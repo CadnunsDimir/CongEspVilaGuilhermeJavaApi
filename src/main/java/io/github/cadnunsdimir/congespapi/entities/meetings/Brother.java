@@ -20,5 +20,5 @@ public class Brother {
     private String name;
 
     @ManyToMany
-    private List<AssignmenType> assignments;
+    private List<AssignmentType> assignments;
 }

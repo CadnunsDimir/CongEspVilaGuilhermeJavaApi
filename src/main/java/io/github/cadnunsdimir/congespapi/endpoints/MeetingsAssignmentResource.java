@@ -3,10 +3,10 @@ package io.github.cadnunsdimir.congespapi.endpoints;
 import io.github.cadnunsdimir.congespapi.domain.models.MeetingAssignmentTemplateModel;
 import io.github.cadnunsdimir.congespapi.domain.services.MeetingAssignmentService;
 import io.github.cadnunsdimir.congespapi.domain.services.MeetingAssignmentTemplateService;
-import io.github.cadnunsdimir.congespapi.entities.meetings.AssignmenType;
+import io.github.cadnunsdimir.congespapi.entities.meetings.AssignmentType;
 import io.github.cadnunsdimir.congespapi.entities.meetings.Brother;
 import io.github.cadnunsdimir.congespapi.entities.meetings.MeetingAssignmentTemplate;
-import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.AssignmenTypeRepository;
+import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.AssignmentTypeRepository;
 import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.BrotherRepository;
 import io.github.cadnunsdimir.congespapi.infra.services.CsvReaderService;
 import jakarta.transaction.Transactional;
@@ -23,7 +23,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @AllArgsConstructor
 public class MeetingsAssignmentResource {
-    private AssignmenTypeRepository assignmenTypeRepository;
+    private AssignmentTypeRepository assignmentTypeRepository;
     private BrotherRepository brotherRepository;
     private CsvReaderService csvReader;
     private MeetingAssignmentTemplateService templateService;
@@ -38,15 +38,15 @@ public class MeetingsAssignmentResource {
 
     @GET
     @Path("/type")
-    public List<AssignmenType> getTypes() {
-        return this.assignmenTypeRepository.listAll();
+    public List<AssignmentType> getTypes() {
+        return this.assignmentTypeRepository.listAll();
     }
 
     @POST
     @Path("/type")
     @Transactional
-    public Response createType(AssignmenType newRecord) {
-        this.assignmenTypeRepository.persist(newRecord);
+    public Response createType(AssignmentType newRecord) {
+        this.assignmentTypeRepository.persist(newRecord);
         return Response.status(StatusCode.CREATED).build();
     }
 

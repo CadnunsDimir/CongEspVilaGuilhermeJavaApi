@@ -9,7 +9,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "meetings_assignment_type")
 @Data
-public class AssignmenType {
+public class AssignmentType {
     @Id
     @GeneratedValue
     @UuidGenerator

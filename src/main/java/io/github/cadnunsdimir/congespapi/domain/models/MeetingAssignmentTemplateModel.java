@@ -1,6 +1,6 @@
 package io.github.cadnunsdimir.congespapi.domain.models;
 
-import io.github.cadnunsdimir.congespapi.entities.meetings.AssignmenType;
+import io.github.cadnunsdimir.congespapi.entities.meetings.AssignmentType;
 import io.github.cadnunsdimir.congespapi.entities.meetings.MeetingAssignmentTemplate;
 import lombok.Data;
 
@@ -15,7 +15,7 @@ public class MeetingAssignmentTemplateModel {
         return templateModel.stream().map(x-> {
             var entity = new MeetingAssignmentTemplate();
             entity.setLabel(x.label);
-            entity.setType(new AssignmenType());
+            entity.setType(new AssignmentType());
             entity.getType().setId(x.getTypeId());
             return entity;
         }).toList();

@@ -1,8 +1,8 @@
 package io.github.cadnunsdimir.congespapi.infra.services;
 
-import io.github.cadnunsdimir.congespapi.entities.meetings.AssignmenType;
+import io.github.cadnunsdimir.congespapi.entities.meetings.AssignmentType;
 import io.github.cadnunsdimir.congespapi.entities.meetings.Brother;
-import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.AssignmenTypeRepository;
+import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.AssignmentTypeRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.AllArgsConstructor;
 
@@ -11,19 +11,19 @@ import java.util.*;
 @ApplicationScoped
 @AllArgsConstructor
 public class CsvReaderService {
-    private AssignmenTypeRepository assignmenTypeRepository;
+    private AssignmentTypeRepository assignmentTypeRepository;
 
     public List<Brother> toBrotherList(String csv) {
         var lines = csv.split("\n");
         var header = lines[0].split(",");
-        Map<Integer, AssignmenType> headerMap = new HashMap<>();
+        Map<Integer, AssignmentType> headerMap = new HashMap<>();
 
         for (int i = 1; i < header.length; i++) {
             var typeAsString = header[i];
-            var type = this.assignmenTypeRepository.findByType(typeAsString);
+            var type = this.assignmentTypeRepository.findByType(typeAsString);
 
             if (type == null) {
-                type = new AssignmenType();
+                type = new AssignmentType();
                 type.setId(UUID.randomUUID());
                 type.setType(typeAsString);    
             }
@@ -37,7 +37,7 @@ public class CsvReaderService {
             var brotherLine = lines[line].split(",");
             var brother = new Brother();
             brother.setName(brotherLine[0]);
-            var assignment = new ArrayList<AssignmenType>();
+            var assignment = new ArrayList<AssignmentType>();
 
             for (int column = 1; column < brotherLine.length; column++) {
                 var type = headerMap.get(column);
