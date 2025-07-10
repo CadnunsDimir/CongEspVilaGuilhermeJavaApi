@@ -53,3 +53,17 @@ GET http://localhost:8085/api/congregation/groups
 
 ### get cleaning list
 GET http://localhost:8085/api/meetings/cleaning
+
+
+### brothers
+GET  http://localhost:8085/api/meetings/assignment/brother
+
+### update brother
+POST http://localhost:8085/api/meetings/assignment/brother
+
+{
+    "id": "e8feaef0-0e36-4fe7-bd93-857ae84bea1c",
+    "name": "Tiago Nascimento",
+    "assignments": [
+    ]
+  }
