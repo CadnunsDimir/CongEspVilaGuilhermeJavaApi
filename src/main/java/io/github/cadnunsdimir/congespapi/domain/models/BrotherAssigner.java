@@ -2,12 +2,13 @@ package io.github.cadnunsdimir.congespapi.domain.models;
 
 import io.github.cadnunsdimir.congespapi.entities.meetings.Brother;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import java.util.*;
 
-@Data
+@Getter
 @RequiredArgsConstructor
 public class BrotherAssigner {
     @NonNull
@@ -15,9 +16,8 @@ public class BrotherAssigner {
     @NonNull
     private String type;
     private int index = 0;
-    private int safetyRecursiveCounter = 0;
 
-    public Brother next(List<Object> ignoreList, UUID columnId){
+    public Brother next(List<Object> ignoreList){
         if(this.index >= this.brothers.size()){
             this.index = 0;
             reorderBrothers();
@@ -28,15 +28,10 @@ public class BrotherAssigner {
 
         index++;
         if(notInIgnoreList) {
-            if(type.equals("AudioVideo")) {
-                System.out.println(index+"-"+brotherName);
-            }
-            safetyRecursiveCounter = 0;
             return brother;
         }
 
-        safetyRecursiveCounter++;
-        return next(ignoreList, columnId);
+        return next(ignoreList);
     }
 
     private void reorderBrothers() {
@@ -47,5 +42,9 @@ public class BrotherAssigner {
         }
         newList.add(firstItem);
         this.brothers = newList;
+    }
+
+    public void revertList() {
+        this.brothers = this.brothers.reversed();
     }
 }

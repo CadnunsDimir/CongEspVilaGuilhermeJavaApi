@@ -7,6 +7,7 @@ import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.TemplateRep
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.AllArgsConstructor;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,16 +19,16 @@ public class MeetingAssignmentService extends MeetingListServiceBase {
 
     public List<List<Object>> getSchedule() {
         var meetings = new ArrayList<List<Object>>();
-        var currentDate = this.firstDay(); 
+        var currentDate = this.firstDay(fullWeekdays);
         var template = getTemplate();
-        var headerArray = new ArrayList<Object>();
+        var headerArray = new ArrayList<>();
         headerArray.add("Date");
         template.forEach(x-> headerArray.add(x.getLabel()));
         List<BrotherAssigner> assigners = getAssigner();
         meetings.add(headerArray);
 
         for (int meetingIndex = 0; meetingIndex < meetingsAmount; meetingIndex++) {
-            var date = new ArrayList<Object>();
+            var date = new ArrayList<>();
             date.add(currentDate);
             for (MeetingAssignmentTemplate templateItem : template) {
                 var assigner = assigners.stream()
@@ -35,10 +36,10 @@ public class MeetingAssignmentService extends MeetingListServiceBase {
                         x.getType().equals(templateItem.getType().getType()))
                     .findFirst()
                     .orElseThrow();
-                date.add(assigner.next(date, templateItem.getId()).getName());
+                date.add(assigner.next(date).getName());
             }
             meetings.add(date);
-            currentDate = this.nextMeetingDate(currentDate);
+            currentDate = this.nextMeetingDate(currentDate, fullWeekdays);
         }
 
         return meetings;

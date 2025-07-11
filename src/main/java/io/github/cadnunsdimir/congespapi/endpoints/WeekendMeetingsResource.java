@@ -4,7 +4,6 @@ import io.github.cadnunsdimir.congespapi.entities.meetings.Brother;
 import io.github.cadnunsdimir.congespapi.entities.meetings.PublicTalk;
 import io.github.cadnunsdimir.congespapi.domain.models.WeekendMeeting;
 import io.github.cadnunsdimir.congespapi.domain.services.WeekendMeetingService;
-import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.BrotherRepository;
 import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.PublicTalkRepository;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -21,8 +20,6 @@ import java.util.List;
 public class WeekendMeetingsResource {
     private WeekendMeetingService weekendMeetingService;
     private PublicTalkRepository publicTalkRepository;
-
-    private BrotherRepository brotherRepository;
 
     @GET
     public List<WeekendMeeting> get(){

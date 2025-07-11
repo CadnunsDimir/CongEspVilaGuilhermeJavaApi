@@ -14,7 +14,7 @@ public class CleaningAssignmentService extends MeetingListServiceBase {
     private GroupRepository groupRepository;
 
     public List<CleaningAssingmentDate> getList() {
-        var currentDate = this.firstDay();
+        var currentDate = this.firstDay(fullWeekdays);
         List<CleaningAssingmentDate> dates = new ArrayList<>();
         var groups = this.groupRepository.orderByGroupNumber();
 
@@ -22,7 +22,7 @@ public class CleaningAssignmentService extends MeetingListServiceBase {
             var groupIndex = (meetingIndex % groups.size());
             var group = groups.get(groupIndex);
             dates.add(new CleaningAssingmentDate(currentDate, group, "Después de la reunión"));
-            currentDate = this.nextMeetingDate(currentDate);
+            currentDate = this.nextMeetingDate(currentDate, fullWeekdays);
         }
         return dates;
     }

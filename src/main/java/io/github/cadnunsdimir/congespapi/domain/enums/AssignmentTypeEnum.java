@@ -9,7 +9,9 @@ import java.security.Key;
 @AllArgsConstructor
 @Getter
 public enum AssignmentTypeEnum {
-    WATCHTOWER_STUDY_CONDUCTOR("WatchtowerStudyConductor");
+    WATCHTOWER_STUDY_CONDUCTOR("ConducAtal"),
+    WATCHTOWER_STUDY_READER("LectorAtal"),
+    WEEKEND_MEETING_PRESIDENT("PresFinSem");
     private final String type;
 
     @Override

@@ -70,3 +70,7 @@ Content-Type: application/json
         "typeId":  "dac55759-62a4-4c1d-ab83-e988ab5237cd"
     }
 ]
+
+
+### get weekend meeting schedule
+GET http://localhost:8086/api/meetings/weekends

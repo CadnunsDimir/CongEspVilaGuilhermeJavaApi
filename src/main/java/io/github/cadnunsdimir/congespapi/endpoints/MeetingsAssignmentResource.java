@@ -1,6 +1,7 @@
 package io.github.cadnunsdimir.congespapi.endpoints;
 
 import io.github.cadnunsdimir.congespapi.domain.models.MeetingAssignmentTemplateModel;
+import io.github.cadnunsdimir.congespapi.domain.services.BrotherService;
 import io.github.cadnunsdimir.congespapi.domain.services.MeetingAssignmentService;
 import io.github.cadnunsdimir.congespapi.domain.services.MeetingAssignmentTemplateService;
 import io.github.cadnunsdimir.congespapi.entities.meetings.AssignmentType;
@@ -28,6 +29,7 @@ public class MeetingsAssignmentResource {
     private CsvReaderService csvReader;
     private MeetingAssignmentTemplateService templateService;
     private MeetingAssignmentService meetingAssignmentService;
+    private BrotherService brotherService;
 
     @GET
     public Response getSchedule(){
@@ -60,8 +62,8 @@ public class MeetingsAssignmentResource {
     @Path("/brother")
     @Transactional
     public Response createBrother(Brother brother) {
-        this.brotherRepository.persist(brother);
-        return Response.status(StatusCode.CREATED).build();
+        this.brotherService.createOrUpdate(brother);
+        return Response.status(StatusCode.OK).build();
     }
 
     @POST

@@ -27,10 +27,10 @@ public class BrotherRepository implements PanacheRepositoryBase<Brother, UUID> {
         return groupedResults;
     }
 
-    public List<Brother> findByAssignment(AssignmentType assignmentType) {
+    public List<Brother> findByAssignment(String assignmentType) {
         return this.find(
                 "from Brother brother" +
                         " join brother.assignments assignment" +
-                        " where assignment.type = ?1", assignmentType.getType()).list();
+                        " where assignment.type = ?1", assignmentType).list();
     }
 }

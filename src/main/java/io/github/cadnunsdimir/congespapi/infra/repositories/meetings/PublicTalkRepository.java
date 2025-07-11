@@ -32,7 +32,10 @@ public class PublicTalkRepository implements PanacheRepository<PublicTalk> {
         var firstDay = LocalDate.of(year, month, 1);
         var lastDay = firstDay.plusMonths(1);
 
+        return listBetweenDates(firstDay, lastDay);
+    }
 
-        return list("from PublicTalk where date is between ?1 and ?2", firstDay, lastDay);
+    public List<PublicTalk> listBetweenDates(LocalDate firstDate, LocalDate lastDate) {
+        return list("from PublicTalk where date between ?1 and ?2", firstDate, lastDate);
     }
 }

@@ -67,3 +67,55 @@ POST http://localhost:8085/api/meetings/assignment/brother
     "assignments": [
     ]
   }
+
+### get meeting assingment type
+GET http://localhost:8085/api/meetings/assignment/type
+
+### get meeting assingment type
+POST http://localhost:8085/api/meetings/assignment/type
+
+{
+    "type": "PresFinSem"
+}
+
+### brothers
+GET  http://localhost:8085/api/meetings/assignment/brother
+
+### update brother
+POST http://localhost:8085/api/meetings/assignment/brother
+
+{
+    "id": "e8feaef0-0e36-4fe7-bd93-857ae84bea1c",
+    "name": "Tiago Nascimento",
+    "assignments": [
+        {
+            "id": "4a2ec436-ec21-4e5c-9460-41869d933435",
+            "type": "LectorAtal"
+        },
+        {
+            "id": "09736a01-57d8-4650-a898-ed922f7439fe",
+            "type": "PresFinSem"
+        }
+    ]
+}
+
+### update brother
+POST http://localhost:8085/api/meetings/assignment/brother
+{
+    "id": "50870374-82ff-40cd-b48a-9a2dace0e10e",
+    "name": "Antonio Ribeiro",
+    "assignments": [
+      {
+        "id": "9cca0aea-df1a-4a3a-8f13-105ce116c31e",
+        "type": "Acomodador"
+      },
+      {
+            "id": "4a2ec436-ec21-4e5c-9460-41869d933435",
+            "type": "LectorAtal"
+        },
+        {
+            "id": "09736a01-57d8-4650-a898-ed922f7439fe",
+            "type": "PresFinSem"
+        }
+    ]
+  }

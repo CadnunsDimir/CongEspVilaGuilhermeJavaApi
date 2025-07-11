@@ -3,6 +3,7 @@ package io.github.cadnunsdimir.congespapi.infra.repositories.meetings;
 import io.github.cadnunsdimir.congespapi.entities.meetings.AssignmentType;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 
 import java.util.UUID;
 
@@ -19,7 +20,6 @@ public class AssignmentTypeRepository implements PanacheRepositoryBase<Assignmen
             typeOnDb = new AssignmentType();
             typeOnDb.setType(type);
             typeOnDb.setId(UUID.randomUUID());
-            persist(typeOnDb);
         }
         return typeOnDb;
     }
