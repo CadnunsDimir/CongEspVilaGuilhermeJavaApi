@@ -2,9 +2,6 @@ package io.github.cadnunsdimir.congespapi.domain.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.ToString;
-
-import java.security.Key;
 
 @AllArgsConstructor
 @Getter

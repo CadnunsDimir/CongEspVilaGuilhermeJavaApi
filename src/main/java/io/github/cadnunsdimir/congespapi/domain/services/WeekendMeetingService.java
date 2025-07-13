@@ -1,6 +1,5 @@
 package io.github.cadnunsdimir.congespapi.domain.services;
 
-import io.github.cadnunsdimir.congespapi.domain.enums.AssignmentTypeEnum;
 import io.github.cadnunsdimir.congespapi.domain.models.BrotherAssigner;
 import io.github.cadnunsdimir.congespapi.domain.models.WeekendMeeting;
 import io.github.cadnunsdimir.congespapi.entities.meetings.AssignmentType;
@@ -53,7 +52,7 @@ public class WeekendMeetingService extends MeetingListServiceBase{
                     .filter(x-> x.getDate().equals(finalCurrentDate))
                     .findFirst()
                     .orElse(new PublicTalk());
-            if(publicTalk.getIsLocal()){
+            if(Boolean.TRUE.equals(publicTalk.getIsLocal())){
                 ignoreList.add(publicTalk.getSpeaker());
             }
             var president = presidentAssigner.next(ignoreList).getName();
@@ -64,7 +63,7 @@ public class WeekendMeetingService extends MeetingListServiceBase{
                     finalCurrentDate,
                     president,
                     publicTalk.getSpeaker(),
-                    publicTalk.getIsLocal() ? "Arreglo Local" : publicTalk.getCongregation(),
+                    Boolean.TRUE.equals(publicTalk.getIsLocal()) ? "Arreglo Local" : publicTalk.getCongregation(),
                     publicTalk.getPublicTalkTheme(),
                     publicTalk.getOutlineNumber(),
                     conductor,
@@ -89,12 +88,13 @@ public class WeekendMeetingService extends MeetingListServiceBase{
     }
 
     private void removeFromPrevious(AssignmentType assignmentType) {
-        var brothers = this.brotherRepository.findByAssignment(assignmentType.getType());
+        var type = assignmentType.getType();
+        var brothers = this.brotherRepository.findByAssignment(type);
         for (Brother brother: brothers) {
             var typeToRemove = brother.getAssignments()
-                    .stream().filter(x->x.getType() == assignmentType.getType())
+                    .stream().filter(x-> type.equals(x.getType()))
                     .findFirst()
-                    .get();
+                    .orElseThrow();
             brother.getAssignments().remove(typeToRemove);
             this.brotherRepository.persist(brother);
         }

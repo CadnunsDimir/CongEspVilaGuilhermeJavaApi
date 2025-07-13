@@ -1,7 +1,6 @@
 package io.github.cadnunsdimir.congespapi.domain.models;
 
 import io.github.cadnunsdimir.congespapi.entities.meetings.Brother;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

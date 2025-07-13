@@ -1,8 +1,6 @@
 package io.github.cadnunsdimir.congespapi.infra.repositories.meetings;
 
-import io.github.cadnunsdimir.congespapi.entities.meetings.AssignmentType;
 import io.github.cadnunsdimir.congespapi.entities.meetings.Brother;
-import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
 

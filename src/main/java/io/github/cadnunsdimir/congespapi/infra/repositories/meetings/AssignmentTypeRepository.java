@@ -3,8 +3,6 @@ package io.github.cadnunsdimir.congespapi.infra.repositories.meetings;
 import io.github.cadnunsdimir.congespapi.entities.meetings.AssignmentType;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.transaction.Transactional;
-
 import java.util.UUID;
 
 @ApplicationScoped

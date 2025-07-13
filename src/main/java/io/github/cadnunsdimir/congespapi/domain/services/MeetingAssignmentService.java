@@ -7,7 +7,6 @@ import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.TemplateRep
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.AllArgsConstructor;
 
-import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
