@@ -35,10 +35,11 @@ public class WeekendMeetingService extends MeetingListServiceBase{
         var publicTalks = publicTalkRepository.listBetweenDates(startDate, endDate);
         var presidentType = WEEKEND_MEETING_PRESIDENT.getType();
         var readerType = WATCHTOWER_STUDY_READER.getType();
-        var presidentAssigner = new BrotherAssigner(brotherRepository.findByAssignment(presidentType), presidentType);
-        var readerAssigner = new BrotherAssigner(brotherRepository.findByAssignment(readerType), readerType);
+        var presidentAssigner = new BrotherAssigner(brotherRepository.findByAssignment(presidentType), presidentType, true);
+        var readerAssigner = new BrotherAssigner(brotherRepository.findByAssignment(readerType), readerType, true);
 
-        readerAssigner.revertList();
+        presidentAssigner.alternateOrder();
+        readerAssigner.alternateOrder();
 
         while (currentDate.isBefore(endDate)){
             LocalDate finalCurrentDate = currentDate;

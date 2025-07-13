@@ -47,7 +47,7 @@ public class MeetingAssignmentService extends MeetingListServiceBase {
     private List<BrotherAssigner> getAssigner() {
         List<BrotherAssigner> list = new ArrayList<>();
         this.brotherRepository.groupedByAssignment().forEach((key, value)-> 
-            list.add(new BrotherAssigner(value, key)));
+            list.add(new BrotherAssigner(value, key, false)));
         return list;
     }
 
