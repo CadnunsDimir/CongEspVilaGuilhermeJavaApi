@@ -17,7 +17,7 @@ public class PublicTalkRepository implements PanacheRepository<PublicTalk> {
                 .firstResultOptional()
                 .map(db-> {
                     db.setCongregation(publicTalk.getCongregation());
-                    db.setLocal(publicTalk.isLocal());
+                    db.setIsLocal(publicTalk.getIsLocal());
                     db.setOutlineNumber(publicTalk.getOutlineNumber());
                     db.setSpeaker(publicTalk.getSpeaker());
                     db.setPublicTalkTheme(publicTalk.getPublicTalkTheme());

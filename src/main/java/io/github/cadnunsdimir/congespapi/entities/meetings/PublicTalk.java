@@ -21,7 +21,7 @@ public class PublicTalk {
     private LocalDate date;
     private String speaker;
     private String publicTalkTheme;
-    private int outlineNumber;
-    private boolean isLocal;
+    private Integer outlineNumber = 0;
+    private Boolean isLocal = false;
     private String congregation;
 }

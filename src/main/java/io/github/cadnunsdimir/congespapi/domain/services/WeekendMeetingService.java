@@ -53,7 +53,7 @@ public class WeekendMeetingService extends MeetingListServiceBase{
                     .filter(x-> x.getDate().equals(finalCurrentDate))
                     .findFirst()
                     .orElse(new PublicTalk());
-            if(publicTalk.isLocal()){
+            if(publicTalk.getIsLocal()){
                 ignoreList.add(publicTalk.getSpeaker());
             }
             var president = presidentAssigner.next(ignoreList).getName();
@@ -64,7 +64,7 @@ public class WeekendMeetingService extends MeetingListServiceBase{
                     finalCurrentDate,
                     president,
                     publicTalk.getSpeaker(),
-                    publicTalk.isLocal() ? "Arreglo Local" : publicTalk.getCongregation(),
+                    publicTalk.getIsLocal() ? "Arreglo Local" : publicTalk.getCongregation(),
                     publicTalk.getPublicTalkTheme(),
                     publicTalk.getOutlineNumber(),
                     conductor,

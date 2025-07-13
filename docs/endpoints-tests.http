@@ -17,7 +17,7 @@ GET http://localhost:8086/api/meetings/assignment
 POST http://localhost:8086/api/meetings/assignment/type
 
 {
-    "type": "Microfono"
+    "type": "ConducAtal"
 }
 
 ### get meeting assingment type
@@ -74,3 +74,19 @@ Content-Type: application/json
 
 ### get weekend meeting schedule
 GET http://localhost:8086/api/meetings/weekends
+
+
+### assing watchtower study conductor
+
+POST http://localhost:8086/api/meetings/weekends/watchtower-study-conductor
+
+{
+    "id": "e8eddfd7-28b7-44ca-87fd-f9243bcccfc7",
+    "name": "Derik Leite",
+    "assignments": []
+  }
+
+### update a public talk
+POST http://localhost:8086/api/meetings/weekends/public-talk
+
+{"date":"2025-07-27","speaker":"Pedro Farfan","publicTalkTheme":"¿En las promesas de quién confía usted?","outlineNumber":61,"isLocal":true,"congregation":""}
