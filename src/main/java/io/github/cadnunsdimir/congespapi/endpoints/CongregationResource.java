@@ -1,7 +1,7 @@
 package io.github.cadnunsdimir.congespapi.endpoints;
 
-import io.github.cadnunsdimir.congespapi.entities.congregation.CongregationGroup;
-import io.github.cadnunsdimir.congespapi.infra.repositories.congregation.GroupRepository;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.congregation.CongregationGroup;
+import io.github.cadnunsdimir.congespapi.infra.data.repositories.congregation.GroupRepository;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;

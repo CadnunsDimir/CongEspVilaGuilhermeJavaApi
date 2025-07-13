@@ -1,8 +1,8 @@
 package io.github.cadnunsdimir.congespapi.domain.services;
 
-import io.github.cadnunsdimir.congespapi.entities.meetings.Brother;
-import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.AssignmentTypeRepository;
-import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.BrotherRepository;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.Brother;
+import io.github.cadnunsdimir.congespapi.infra.data.repositories.meetings.AssignmentTypeRepository;
+import io.github.cadnunsdimir.congespapi.infra.data.repositories.meetings.BrotherRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.AllArgsConstructor;
 

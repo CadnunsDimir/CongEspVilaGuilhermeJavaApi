@@ -1,13 +1,14 @@
 package io.github.cadnunsdimir.congespapi.domain.models;
 
-import io.github.cadnunsdimir.congespapi.entities.territory.assignment.AssignmentRecord;
-import io.github.cadnunsdimir.congespapi.entities.territory.assignment.Sheet;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import io.github.cadnunsdimir.congespapi.infra.data.entities.territory.assignment.AssignmentRecord;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.territory.assignment.Sheet;
 
 @Data
 @NoArgsConstructor

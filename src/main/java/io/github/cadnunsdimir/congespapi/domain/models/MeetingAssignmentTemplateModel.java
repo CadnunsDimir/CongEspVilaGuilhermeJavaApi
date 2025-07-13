@@ -1,11 +1,12 @@
 package io.github.cadnunsdimir.congespapi.domain.models;
 
-import io.github.cadnunsdimir.congespapi.entities.meetings.AssignmentType;
-import io.github.cadnunsdimir.congespapi.entities.meetings.MeetingAssignmentTemplate;
 import lombok.Data;
 
 import java.util.List;
 import java.util.UUID;
+
+import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.AssignmentType;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.MeetingAssignmentTemplate;
 
 @Data
 public class MeetingAssignmentTemplateModel {

@@ -3,12 +3,12 @@ package io.github.cadnunsdimir.congespapi.domain.services;
 import io.github.cadnunsdimir.congespapi.domain.models.TerritoryAssignmentPatchRecord;
 import io.github.cadnunsdimir.congespapi.domain.models.TerritoryAssignmentRecord;
 import io.github.cadnunsdimir.congespapi.domain.models.TerritoryAssignmentSheetData;
-import io.github.cadnunsdimir.congespapi.entities.territory.assignment.AssignmentRecord;
-import io.github.cadnunsdimir.congespapi.entities.territory.assignment.Sheet;
-import io.github.cadnunsdimir.congespapi.entities.territory.assignment.TerritoryNumber;
-import io.github.cadnunsdimir.congespapi.infra.repositories.territory.assignment.RecordRepository;
-import io.github.cadnunsdimir.congespapi.infra.repositories.territory.assignment.SheetRepository;
-import io.github.cadnunsdimir.congespapi.infra.repositories.territory.assignment.TerritoryNumberRepository;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.territory.assignment.AssignmentRecord;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.territory.assignment.Sheet;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.territory.assignment.TerritoryNumber;
+import io.github.cadnunsdimir.congespapi.infra.data.repositories.territory.assignment.RecordRepository;
+import io.github.cadnunsdimir.congespapi.infra.data.repositories.territory.assignment.SheetRepository;
+import io.github.cadnunsdimir.congespapi.infra.data.repositories.territory.assignment.TerritoryNumberRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 

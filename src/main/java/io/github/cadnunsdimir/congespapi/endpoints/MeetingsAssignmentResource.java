@@ -4,11 +4,11 @@ import io.github.cadnunsdimir.congespapi.domain.models.MeetingAssignmentTemplate
 import io.github.cadnunsdimir.congespapi.domain.services.BrotherService;
 import io.github.cadnunsdimir.congespapi.domain.services.MeetingAssignmentService;
 import io.github.cadnunsdimir.congespapi.domain.services.MeetingAssignmentTemplateService;
-import io.github.cadnunsdimir.congespapi.entities.meetings.AssignmentType;
-import io.github.cadnunsdimir.congespapi.entities.meetings.Brother;
-import io.github.cadnunsdimir.congespapi.entities.meetings.MeetingAssignmentTemplate;
-import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.AssignmentTypeRepository;
-import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.BrotherRepository;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.AssignmentType;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.Brother;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.MeetingAssignmentTemplate;
+import io.github.cadnunsdimir.congespapi.infra.data.repositories.meetings.AssignmentTypeRepository;
+import io.github.cadnunsdimir.congespapi.infra.data.repositories.meetings.BrotherRepository;
 import io.github.cadnunsdimir.congespapi.infra.services.CsvReaderService;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;

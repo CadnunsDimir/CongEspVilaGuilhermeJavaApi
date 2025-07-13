@@ -1,6 +1,6 @@
-package io.github.cadnunsdimir.congespapi.infra.repositories.territory.assignment;
+package io.github.cadnunsdimir.congespapi.infra.data.repositories.territory.assignment;
 
-import io.github.cadnunsdimir.congespapi.entities.territory.assignment.Sheet;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.territory.assignment.Sheet;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;

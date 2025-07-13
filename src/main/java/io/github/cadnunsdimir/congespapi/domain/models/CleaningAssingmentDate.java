@@ -1,9 +1,10 @@
 package io.github.cadnunsdimir.congespapi.domain.models;
 
-import io.github.cadnunsdimir.congespapi.entities.congregation.CongregationGroup;
 import lombok.Data;
 
 import java.time.LocalDate;
+
+import io.github.cadnunsdimir.congespapi.infra.data.entities.congregation.CongregationGroup;
 
 @Data
 public class CleaningAssingmentDate {

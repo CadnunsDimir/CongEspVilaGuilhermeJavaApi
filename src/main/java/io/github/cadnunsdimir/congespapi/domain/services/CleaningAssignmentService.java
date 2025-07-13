@@ -1,7 +1,7 @@
 package io.github.cadnunsdimir.congespapi.domain.services;
 
 import io.github.cadnunsdimir.congespapi.domain.models.CleaningAssingmentDate;
-import io.github.cadnunsdimir.congespapi.infra.repositories.congregation.GroupRepository;
+import io.github.cadnunsdimir.congespapi.infra.data.repositories.congregation.GroupRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.AllArgsConstructor;
 

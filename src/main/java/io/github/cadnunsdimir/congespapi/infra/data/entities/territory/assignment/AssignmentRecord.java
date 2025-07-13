@@ -1,4 +1,4 @@
-package io.github.cadnunsdimir.congespapi.entities.territory.assignment;
+package io.github.cadnunsdimir.congespapi.infra.data.entities.territory.assignment;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

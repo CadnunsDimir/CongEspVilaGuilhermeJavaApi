@@ -1,6 +1,6 @@
-package io.github.cadnunsdimir.congespapi.infra.repositories.meetings;
+package io.github.cadnunsdimir.congespapi.infra.data.repositories.meetings;
 
-import io.github.cadnunsdimir.congespapi.entities.meetings.PublicTalk;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.PublicTalk;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;

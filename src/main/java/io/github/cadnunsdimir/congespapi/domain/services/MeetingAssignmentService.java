@@ -1,9 +1,9 @@
 package io.github.cadnunsdimir.congespapi.domain.services;
 
 import io.github.cadnunsdimir.congespapi.domain.models.BrotherAssigner;
-import io.github.cadnunsdimir.congespapi.entities.meetings.MeetingAssignmentTemplate;
-import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.BrotherRepository;
-import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.TemplateRepository;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.MeetingAssignmentTemplate;
+import io.github.cadnunsdimir.congespapi.infra.data.repositories.meetings.BrotherRepository;
+import io.github.cadnunsdimir.congespapi.infra.data.repositories.meetings.TemplateRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.AllArgsConstructor;
 

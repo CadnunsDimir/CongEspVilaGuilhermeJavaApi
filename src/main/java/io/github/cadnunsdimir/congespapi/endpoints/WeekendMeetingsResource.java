@@ -1,10 +1,10 @@
 package io.github.cadnunsdimir.congespapi.endpoints;
 
-import io.github.cadnunsdimir.congespapi.entities.meetings.Brother;
-import io.github.cadnunsdimir.congespapi.entities.meetings.PublicTalk;
 import io.github.cadnunsdimir.congespapi.domain.models.WeekendMeeting;
 import io.github.cadnunsdimir.congespapi.domain.services.WeekendMeetingService;
-import io.github.cadnunsdimir.congespapi.infra.repositories.meetings.PublicTalkRepository;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.Brother;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.PublicTalk;
+import io.github.cadnunsdimir.congespapi.infra.data.repositories.meetings.PublicTalkRepository;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;

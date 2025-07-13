@@ -1,4 +1,4 @@
-package io.github.cadnunsdimir.congespapi.entities.meetings;
+package io.github.cadnunsdimir.congespapi.infra.data.entities.meetings;
 
 import jakarta.persistence.*;
 import lombok.Data;

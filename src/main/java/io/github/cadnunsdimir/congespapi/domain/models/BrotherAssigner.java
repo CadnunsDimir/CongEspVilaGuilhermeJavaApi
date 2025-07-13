@@ -1,10 +1,11 @@
 package io.github.cadnunsdimir.congespapi.domain.models;
 
-import io.github.cadnunsdimir.congespapi.entities.meetings.Brother;
 import lombok.Getter;
 import lombok.NonNull;
 
 import java.util.*;
+
+import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.Brother;
 
 @Getter
 public class BrotherAssigner {

@@ -1,6 +1,6 @@
-package io.github.cadnunsdimir.congespapi.infra.repositories.congregation;
+package io.github.cadnunsdimir.congespapi.infra.data.repositories.congregation;
 
-import io.github.cadnunsdimir.congespapi.entities.congregation.CongregationGroup;
+import io.github.cadnunsdimir.congespapi.infra.data.entities.congregation.CongregationGroup;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
