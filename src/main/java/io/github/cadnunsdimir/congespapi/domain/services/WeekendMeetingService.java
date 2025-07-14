@@ -1,6 +1,9 @@
 package io.github.cadnunsdimir.congespapi.domain.services;
 
+import io.github.cadnunsdimir.congespapi.domain.enums.AssignmentTypeEnum;
 import io.github.cadnunsdimir.congespapi.domain.models.BrotherAssigner;
+import io.github.cadnunsdimir.congespapi.domain.models.WeekendAllowedBrothers;
+import io.github.cadnunsdimir.congespapi.domain.models.WeekendAssingmentRequest;
 import io.github.cadnunsdimir.congespapi.domain.models.WeekendMeeting;
 import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.AssignmentType;
 import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.Brother;
@@ -18,8 +21,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
 import static io.github.cadnunsdimir.congespapi.domain.enums.AssignmentTypeEnum.*;
 
 @ApplicationScoped
@@ -45,13 +46,8 @@ public class WeekendMeetingService extends MeetingListServiceBase{
             return this.join(persistedList, publicTalks);
         }
 
-        var presidentType = WEEKEND_MEETING_PRESIDENT.getType();
-        var readerType = WATCHTOWER_STUDY_READER.getType();
-        var presidentAssigner = new BrotherAssigner(brotherRepository.findByAssignment(presidentType), presidentType, true);
-        var readerAssigner = new BrotherAssigner(brotherRepository.findByAssignment(readerType), readerType, true);
-
-        presidentAssigner.alternateOrder();
-        readerAssigner.alternateOrder();
+        var presidentAssigner = getAlternatedAssigner(WEEKEND_MEETING_PRESIDENT);
+        var readerAssigner = getAlternatedAssigner(WATCHTOWER_STUDY_READER);
 
         while (currentDate.isBefore(endDate)){
             LocalDate finalCurrentDate = currentDate;
@@ -150,5 +146,30 @@ public class WeekendMeetingService extends MeetingListServiceBase{
             brother.getAssignments().remove(typeToRemove);
             this.brotherRepository.persist(brother);
         }
+    }
+
+    @Transactional
+    public void updateMeeting(WeekendAssingmentRequest changes) {
+        var meeting = this.weekendMeetingAssignmentRepository.findByDate(changes.getDate())
+            .orElseThrow();
+        meeting.setPresident(changes.getPresident());
+        meeting.setWatchtowerStudyConductor(changes.getWatchtowerStudyConductor());
+        meeting.setWatchtowerStudyReader(changes.getWatchtowerStudyReader());
+        this.weekendMeetingAssignmentRepository.persist(meeting);
+    }
+
+    public BrotherAssigner getAlternatedAssigner(AssignmentTypeEnum type) {
+        var assigner = new BrotherAssigner(brotherRepository.findByAssignment(type.getType()), type.getType(), true);
+        assigner.alternateOrder();
+        return assigner;
+    }
+
+    public WeekendAllowedBrothers getBrothers() {
+        var presidentAssigner = getAlternatedAssigner(WEEKEND_MEETING_PRESIDENT);
+        var readerAssigner = getAlternatedAssigner(WATCHTOWER_STUDY_READER);
+        return new WeekendAllowedBrothers(
+            presidentAssigner.getBrothers(),
+            readerAssigner.getBrothers()
+        );
     }
 }

@@ -77,7 +77,6 @@ GET http://localhost:8086/api/meetings/weekends
 
 
 ### assing watchtower study conductor
-
 POST http://localhost:8086/api/meetings/weekends/watchtower-study-conductor
 
 {
@@ -90,3 +89,21 @@ POST http://localhost:8086/api/meetings/weekends/watchtower-study-conductor
 POST http://localhost:8086/api/meetings/weekends/public-talk
 
 {"date":"2025-07-27","speaker":"Pedro Farfan","publicTalkTheme":"¿En las promesas de quién confía usted?","outlineNumber":61,"isLocal":true,"congregation":""}
+
+
+### update meeting assingnments
+PUT http://localhost:8086/api/meetings/weekends/assignments
+
+{
+    "date": "2025-07-06",
+    "president": "",
+    "speaker": "Vanderlei Figueroa",
+    "speakerCongregation": "Esp. Santo André",
+    "publicTalkTheme": "Por qué es provechoso que los cristianos se mantengan separados del mundo",
+    "outlineNumber": 119,
+    "watchtowerStudyConductor": "Derik Leite",
+    "watchtowerStudyReader": ""
+  },
+
+### get allowed brothers to weekend assignments
+GET http://localhost:8086/api/meetings/weekends/brothers

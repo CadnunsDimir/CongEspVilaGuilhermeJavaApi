@@ -1,5 +1,6 @@
 package io.github.cadnunsdimir.congespapi.endpoints;
 
+import io.github.cadnunsdimir.congespapi.domain.models.WeekendAssingmentRequest;
 import io.github.cadnunsdimir.congespapi.domain.models.WeekendMeeting;
 import io.github.cadnunsdimir.congespapi.domain.services.WeekendMeetingService;
 import io.github.cadnunsdimir.congespapi.infra.data.entities.meetings.Brother;
@@ -46,5 +47,18 @@ public class WeekendMeetingsResource {
     public Response setWatchtowerStudyConductor(Brother brother){
         this.weekendMeetingService.setWatchtowerStudyConductor(brother);
         return Response.status(RestResponse.StatusCode.OK).build();
+    }
+
+    @PUT
+    @Path("/assignments")
+    public Response updateAssignments(WeekendAssingmentRequest changes){
+        this.weekendMeetingService.updateMeeting(changes);
+        return Response.status(RestResponse.StatusCode.OK).build();
+    }
+
+    @GET
+    @Path("/brothers")
+    public Response getBrothers() {
+        return Response.ok(this.weekendMeetingService.getBrothers()).build();
     }
 }
