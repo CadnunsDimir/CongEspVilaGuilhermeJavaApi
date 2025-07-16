@@ -13,17 +13,19 @@ import io.github.cadnunsdimir.congespapi.infra.data.entities.territory.assignmen
 @Data
 @NoArgsConstructor
 public class TerritoryAssignmentSheetData {
+    private Map<Integer, LocalDate> lastCompletedDate;
     private long totalPages;
     private int itensPerPage;
     private int serviceYear;
     private List<TerritoryGroup> numbers;
 
-    public TerritoryAssignmentSheetData(Sheet sheet, List<AssignmentRecord> records, int itensPerPage) {
+    public TerritoryAssignmentSheetData(Sheet sheet, List<AssignmentRecord> records, Map<Integer, LocalDate> lastCompletedDate, int itensPerPage) {
         this.itensPerPage = itensPerPage;
         this.serviceYear = sheet.getServiceYear();
         Map<Integer, List<AssignmentRecord>> data =  records.stream().collect(Collectors.groupingBy(x-> x.getTerritoryNumber().getNumber()));
         this.numbers = TerritoryGroup.map(data);
         this.totalPages  = this.calculateTotalSheetNumber();
+        this.lastCompletedDate = lastCompletedDate;
     }
 
     private long calculateTotalSheetNumber() {

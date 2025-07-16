@@ -9,7 +9,7 @@ import jakarta.transaction.Transactional;
 public class SheetRepository implements PanacheRepository<Sheet>{
 
     @Transactional
-    public Sheet findLastServiceYear() {
-        return find("ORDER BY serviceYear DESC").firstResult();
+    public Sheet findLastServiceYear(int serviceYear) {
+        return find("where serviceYear=?1", serviceYear).firstResult();
     }
 }

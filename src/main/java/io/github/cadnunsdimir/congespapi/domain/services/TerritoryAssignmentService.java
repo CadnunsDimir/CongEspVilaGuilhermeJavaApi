@@ -32,7 +32,7 @@ public class TerritoryAssignmentService {
 
     @Transactional
     public void addRecord(final TerritoryAssignmentRecord recordViewModel){
-        Sheet sheet = defineSheet();
+        Sheet sheet = defineSheet(recordViewModel.getAssignedDate());
         TerritoryNumber territoryNumber = defineTerritory(recordViewModel);
         AssignmentRecord dbRecord = buildRecord(recordViewModel, sheet, territoryNumber);
         recordRepository.persist(dbRecord);
@@ -50,23 +50,18 @@ public class TerritoryAssignmentService {
         return territory;
     }
 
-    private Sheet defineSheet() {
-        Sheet sheet = sheetRepository.findLastServiceYear();
+    private Sheet defineSheet(LocalDate date) {
+        var serviceYear = date.getMonth().getValue() >= Month.SEPTEMBER.getValue() ? date.getYear() + 1 : date.getYear();;
+        Sheet sheet = sheetRepository.findLastServiceYear(serviceYear);
         boolean isFirstSheetOfTheServiceYear = sheet == null;
 
         if (isFirstSheetOfTheServiceYear) {
-            int serviceYear = getCurrentServiceYear();
             sheet = new Sheet();
             sheet.setServiceYear(serviceYear);
             sheetRepository.persist(sheet);
         }
 
         return sheet;
-    }
-
-    private int getCurrentServiceYear() {
-        var date = LocalDate.now();
-        return date.getMonth().getValue() >= Month.SEPTEMBER.getValue() ? date.getYear() + 1 : date.getYear();
     }
 
     private AssignmentRecord buildRecord(final TerritoryAssignmentRecord assignmentRecord, Sheet sheet, TerritoryNumber territoryNumber) {
@@ -81,10 +76,11 @@ public class TerritoryAssignmentService {
 
     @Transactional
     public TerritoryAssignmentSheetData getCurrentSheetData() {
-        var sheet = defineSheet();
+        var sheet = defineSheet(LocalDate.now());
         var records = recordRepository.listBySheetId(sheet.getId());
+        var lastCompletedDate = recordRepository.listLastCompletedDateByCardFromLastYearService(sheet.getServiceYear() - 1);
 
-        return new TerritoryAssignmentSheetData(sheet, records, 4);
+        return new TerritoryAssignmentSheetData(sheet, records, lastCompletedDate, 4);
     }
 
     @Transactional
